@@ -102,15 +102,25 @@ router.post('/addDeviceUser',
         }
     })
 
-router.get('/', auth, async (req, res) => {
+router.get('/getAll', auth, async (req, res) => {
     try {
-        const devices = await Device.find({ owner: req.user.userId })
+        const devices = await Device.find({ owner: req.user.userId }, { device_id: true, device_name: true, _id: true })
         res.json(devices)
     } catch (error) {
         res.status(500).json({ message: 'Щось пішло не так, спробуйте знову' })
     }
 })
 
+
+
+router.get('/getOne', auth, async (req, res) => {
+    try {
+        const device = await Device.find({ _id: req.user._id })
+        res.json(device)
+    } catch (error) {
+        res.status(500).json({ message: 'Щось пішло не так, спробуйте знову' })
+    }
+})
 
 
 module.exports = router

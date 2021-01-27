@@ -7,7 +7,6 @@ export const getAllDevices = () => (dispatch) => {
     api.getAllDevices()
         .then(
             ({ data }) => {
-                console.log(data)
                 dispatch({ type: actionType.GET_ALL_DEVICES_SUCCESS });
                 dispatch(setDevices(data));
             }

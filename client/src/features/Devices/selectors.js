@@ -1,1 +1,1 @@
-export const getDevices = (state) => state.devices;
+export const getDevices = (state) => state.devices.devices;

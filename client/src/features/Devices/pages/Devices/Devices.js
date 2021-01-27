@@ -13,6 +13,7 @@ const Devices = () => {
     const dispatch = useDispatch();
     const devices = useSelector(getDevices);
 
+
     useEffect(() => {
         dispatch(getAllDevices());
     }, [dispatch]);

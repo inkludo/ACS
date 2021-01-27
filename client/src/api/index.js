@@ -19,7 +19,16 @@ const signIn = async (email, password) => (
 );
 
 const getAllDevices = async () => (
-    await axios.get(`${API}/devices`, {
+    await axios.get(`${API}/devices/getAll`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+)
+
+//need to add _id
+const getDevice = async () => (
+    await axios.get(`${API}/devices/getOne`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -30,5 +39,6 @@ const getAllDevices = async () => (
 export const api = {
     signUp,
     signIn,
-    getAllDevices
+    getAllDevices,
+    getDevice
 };

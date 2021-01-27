@@ -7,7 +7,6 @@ const initialState = {
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case actionType.SET_DEVICES:
-            console.log(payload)
             return {
                 ...state, devices: payload
             }
