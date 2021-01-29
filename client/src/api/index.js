@@ -26,19 +26,26 @@ const getAllDevices = async () => (
     })
 )
 
-//need to add _id
-const getDevice = async () => (
-    await axios.get(`${API}/devices/getOne`, {
+const getDevice = async (id) => (
+    await axios.get(`${API}/devices/getOne/${id}`, {
         headers: {
             'Authorization': `Bearer ${token}`
-        }
+        },
     })
 )
 
+const getDeviceUsers = async (id) => (
+    await axios.get(`${API}/deviceUser/users/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+)
 
 export const api = {
     signUp,
     signIn,
     getAllDevices,
-    getDevice
+    getDevice,
+    getDeviceUsers
 };

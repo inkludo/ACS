@@ -64,6 +64,7 @@ router.post('/addDeviceUser',
         try {
 
             const errors = validationResult(req);
+            console.log(req.body);
 
             if (!errors.isEmpty()) {
                 return res.status(400).json({
@@ -77,11 +78,13 @@ router.post('/addDeviceUser',
             const { rfid, name, active, role, device_id } = req.body;
             const _id = device_id
 
-            console.log(_id)
+
             const device = await Device.findOne({ _id })
             if (!device) {
                 return res.status(400).json({ message: 'Не знайдено пристрій' })
             }
+
+            console.log(device);
 
 
             const deviceUser = new DeviceUser({
@@ -113,9 +116,9 @@ router.get('/getAll', auth, async (req, res) => {
 
 
 
-router.get('/getOne', auth, async (req, res) => {
+router.get('/getOne/:id', auth, async (req, res) => {
     try {
-        const device = await Device.find({ _id: req.user._id })
+        const device = await Device.find({ _id: req.params.id }, { device_id: true, device_name: true, device_users: true })
         res.json(device)
     } catch (error) {
         res.status(500).json({ message: 'Щось пішло не так, спробуйте знову' })

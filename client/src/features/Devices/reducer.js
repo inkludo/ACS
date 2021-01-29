@@ -8,7 +8,7 @@ const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case actionType.SET_DEVICES:
             return {
-                ...state, devices: payload
+                ...state, devices: [...state.devices, ...payload]
             }
         default: {
             return state;

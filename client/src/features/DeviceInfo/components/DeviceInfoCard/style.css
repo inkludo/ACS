@@ -1,0 +1,14 @@
+.button {
+  margin-bottom: "1vh";
+}
+
+.box {
+  display: "flex";
+  flex-direction: "row";
+  justify-content: "space-between";
+}
+
+.box_buttons {
+  display: "flex";
+  flex-direction: "column";
+}
