@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import App from "./App";
 
-const AppContainer = ({ router, store }) => (
+const AppContainer = ({ store }) => (
     <Router >
         <Provider store={store}>
             <ErrorBoundary>

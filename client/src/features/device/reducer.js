@@ -1,33 +1,29 @@
 import * as actionType from "./types";
 
 const initialState = {
-    devices: [],
-    open: false
+    device: {},
+    users: [],
+    open: false,
+    currentId: null,
+    currentUser: {}
 };
 
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case actionType.SET_DEVICES:
+        case actionType.SET_DEVICE:
             return {
                 ...state,
-                devices: payload
+                device: { ...state.device, ...payload[0] }
             }
-        case actionType.DELETE_DEVICE: {
-            const { removeId } = payload;
-            const devices = state.devices.filter(({ id }) => id !== removeId);
+        case actionType.SET_USERS:
             return {
                 ...state,
-                devices
+                users: [...state.users, ...payload]
             }
-        }
-        case actionType.ADD_DEVICE: {
-            const { device } = payload;
-            const devices = [...state.devices, device];
+        case actionType.REMOVE_DEVICE:
             return {
-                ...state,
-                devices
+                ...initialState
             }
-        }
         case actionType.OPEN_DIALOG:
             return {
                 ...state,

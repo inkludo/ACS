@@ -1,8 +1,8 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import SignIn from '../features/Auth/pages/SignIn';
-import SignUp from '../features/Auth/pages/SignUp';
-import Devices from '../features/Devices/pages/Devices/Devices';
-import DeviceDetails from '../features/DeviceInfo/pages/DeviceInfo/DeviceInfo'
+import SignIn from '../features/auth/pages/SignIn';
+import SignUp from '../features/auth/pages/SignUp';
+import Devices from '../features/devices/pages/Devices/Devices';
+import Device from '../features/device/pages/Device/Device'
 
 
 export const useRoutes = isAuthenticated => (
@@ -10,9 +10,8 @@ export const useRoutes = isAuthenticated => (
     isAuthenticated ? (
         < Switch >
             <Route exact path="/" component={Devices} />
-            <Route exact path="/device/:id" component={DeviceDetails} />
+            <Route exact path="/device/:id" component={Device} />
             <Redirect to='/' />
-
         </ Switch >
     )
         : (

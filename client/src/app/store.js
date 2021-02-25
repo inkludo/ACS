@@ -4,9 +4,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
 import app from '../app/reducer';
-import auth from '../features/Auth/reducer';
-import devices from '../features/Devices/reducer';
-import device from '../features/DeviceInfo/reducer';
+import auth from '../features/auth/reducer';
+import devices from '../features/devices/reducer';
+import device from '../features/device/reducer';
 
 
 

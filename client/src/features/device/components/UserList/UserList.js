@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import MaterialTable from 'material-table';
 import { Button } from '@material-ui/core';
 import { useDispatch, useSelector } from "react-redux";
-import { getDeviceUsers } from '../../actions';
 import { getUsers } from '../../selectors';
 import { useParams } from 'react-router-dom';
+import { openDialog, getDeviceUsers } from '../../actions';
 
 
-const DeviceUserList = () => {
+
+const UserList = () => {
 
     const dispatch = useDispatch();
     const id = useParams().id;
@@ -26,7 +27,7 @@ const DeviceUserList = () => {
         {
             render: () =>
                 <Button
-                    onClick={() => console.log('click')}
+                    onClick={() => console.log("1")}
                     variant="outlined"
                     size="small"
                     color="primary">
@@ -35,16 +36,27 @@ const DeviceUserList = () => {
         }
     ];
 
+    const actions = [
+        {
+            icon: 'add',
+            tooltip: 'Add new user',
+            isFreeAction: true,
+            onClick: () => dispatch(openDialog())
+        }
+    ];
+
 
     return (
+        <>
+            <MaterialTable
+                data={users}
+                columns={columns}
+                title="List of users"
+                actions={actions}
+            />
 
-        <MaterialTable
-            data={users}
-            columns={columns}
-            title="List of users"
-        />
-
+        </>
     )
 }
 
-export default DeviceUserList;
+export default UserList;

@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const API = '/api';
 let token = localStorage.getItem('token');
-console.log(token);
 
 const signUp = async (email, password) => (
     await axios.post(`${API}/auth/signUp`, {
@@ -38,14 +37,38 @@ const getDeviceUsers = async (id) => (
     await axios.get(`${API}/deviceUser/users/${id}`, {
         headers: {
             'Authorization': `Bearer ${token}`
-        },
+        }
+    })
+);
+
+const deleteDevice = async (id) => (
+    await axios.delete(`${API}/devices/delete/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
     })
 )
+
+
+const createDevice = async ({ device_name, device_room }) => {
+
+    return await axios.post(`${API}/devices/add/`, {
+
+        device_name,
+        device_room,
+    }, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+};
 
 export const api = {
     signUp,
     signIn,
     getAllDevices,
     getDevice,
-    getDeviceUsers
+    getDeviceUsers,
+    deleteDevice,
+    createDevice
 };
