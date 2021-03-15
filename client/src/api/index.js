@@ -50,10 +50,8 @@ const deleteDevice = async (id) => (
 )
 
 
-const createDevice = async ({ device_name, device_room }) => {
-
-    return await axios.post(`${API}/devices/add/`, {
-
+const createDevice = async ({ device_name, device_room }) => (
+    await axios.post(`${API}/devices/add/`, {
         device_name,
         device_room,
     }, {
@@ -61,7 +59,15 @@ const createDevice = async ({ device_name, device_room }) => {
             'Authorization': `Bearer ${token}`
         }
     })
-};
+);
+
+const getDeviceLogs = async (id) => (
+    await axios.get(`${API}/logs/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+)
 
 export const api = {
     signUp,
@@ -70,5 +76,6 @@ export const api = {
     getDevice,
     getDeviceUsers,
     deleteDevice,
-    createDevice
+    createDevice,
+    getDeviceLogs
 };

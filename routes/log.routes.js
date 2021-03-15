@@ -7,6 +7,7 @@ const auth = require("../middleware/auth.middleware")
 
 router.get('/:id', auth, async (req, res) => {
     try {
+        console.log(req.params.id)
         const logs = await Log.find({ owner: req.params.id })
         res.json(logs)
     } catch (error) {

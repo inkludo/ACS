@@ -7,14 +7,14 @@ import app from '../app/reducer';
 import auth from '../features/auth/reducer';
 import devices from '../features/devices/reducer';
 import device from '../features/device/reducer';
-
-
+import logs from '../features/logs/reducer';
 
 const reducer = combineReducers({
     app,
     auth,
     devices,
-    device
+    device,
+    logs
 });
 
 export const getStore = () => {

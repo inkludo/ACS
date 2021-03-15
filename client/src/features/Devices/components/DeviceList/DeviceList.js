@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-
 import MaterialTable from 'material-table';
 import Button from '@material-ui/core/Button';
 import { getAllDevices, openDialog } from '../../actions';

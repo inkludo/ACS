@@ -54,7 +54,7 @@ const CardHeader = () => {
             />
             <CardActions>
                 <Box className={classes.boxButtons} component="span" >
-                    <Button size='small' onClick={() => console.log('id')} className={classes.button} variant='outlined' color="primary">Logs</Button>
+                    <Button size='small' onClick={() => history.push(`/device/logs/${id}`)} className={classes.button} variant='outlined' color="primary">Logs</Button>
                     <Button size='small' onClick={() => dispatch(openDialog())} variant='outlined' color="secondary">Delete</Button>
                 </Box>
             </CardActions>
